@@ -41,7 +41,7 @@ on init
     symlink /system/etc /etc
     symlink /sbin/busybox /system/bin/sh
     symlink /vendor/manifest.xml /system/manifest.xml
-
+    start vibrator-service
     start hwservicemanager
     setprop crypto.ready 1
 
@@ -86,6 +86,12 @@ service gatekeeper-1-0 /sbin/android.hardware.gatekeeper@1.0-service-qti
     seclabel u:r:recovery:s0
 
 service keymaster-4-0 /sbin/android.hardware.keymaster@4.0-service-qti
+    user root
+    group root
+    disabled
+    seclabel u:r:recovery:s0
+
+service vibrator-service /sbin/vendor.qti.hardware.vibrator@1.2-service
     user root
     group root
     disabled
